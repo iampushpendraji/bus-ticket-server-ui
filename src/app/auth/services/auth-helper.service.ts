@@ -24,15 +24,21 @@ export class AuthHelperService {
       expires: expirationDate, // Set expiration date
       path: '/',               // Path where the cookie is accessible
       secure: true,            // Cookie is only sent over HTTPS
-      sameSite: 'Lax'          // SameSite attribute to prevent CSRF attacks
+      sameSite: 'Lax',          // SameSite attribute to prevent CSRF attacks
     });
   }
 
 
   // Getting cookies
   getCookies(name: string): string {
-    let cookieData = this._ngxCookieService.get(name);
-    return cookieData;
+    return this._ngxCookieService.get(name);
   }
+
+
+  // Deleting cookies
+  deleteCookies(name: string): void {
+    this._ngxCookieService.delete(name, '/');
+  }
+
 
 }
