@@ -51,7 +51,7 @@ export class ForgotPasswordModalComponent implements OnInit {
   }
 
 
-  // Showing forgot password modal
+  // Showing forgot password modal, We are calling it from parent component
   showModal(): void {
     this.forgotPasswordModal!.show();
   }

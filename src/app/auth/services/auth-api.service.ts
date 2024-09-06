@@ -54,4 +54,18 @@ export class AuthApiService {
   }
 
 
+  // For signing out from currnet device
+  signOut(obj: { refresh_token: string, access_token: string }): Observable<VoidResult204> {
+    let url = `${environment.apiUrl}/auth/${environment.apiVersion}/sign_out`;
+    return this._http.post<VoidResult204>(url, obj);
+  }
+  
+
+  // For signing out from all the device
+  signOutAll(obj: { refresh_token: string, access_token: string }): Observable<VoidResult204> {
+    let url = `${environment.apiUrl}/auth/${environment.apiVersion}/sign_out_all`;
+    return this._http.post<VoidResult204>(url, obj);
+  }
+  
+
 }
