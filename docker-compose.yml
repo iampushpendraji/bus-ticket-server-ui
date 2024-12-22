@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  bus_ui:
+    build: ./  # Builds the image from the Dockerfile in the current directory
+    image: 'busui:01'
+    container_name: 'busui'
+    ports:
+      - "4200:4200"  # Expose necessary ports if applicable
+    networks:
+      - mynetwork  # Ensure all services are on the same network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4200/"]  # Example health check if you have a /health endpoint
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+
+networks:
+  mynetwork:
+    driver: bridge
